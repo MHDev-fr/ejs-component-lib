@@ -1,5 +1,6 @@
 <% 
-    const i = locals.id ? locals.id : console.error("All you 'input:text' need an id.")
-    const n = locals.name ? locals.name : id
+if(!locals.id){
+    console.error("All your 'input:text' need an id.")
+}
 %>
-<input type="text" name="<%=n%>" id="<%=i%>">
+<input type="text" name="<%=locals.name ? name : id%>" id="<%=i%>">

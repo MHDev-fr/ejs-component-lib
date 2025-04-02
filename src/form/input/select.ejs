@@ -1,9 +1,12 @@
 <% 
-if(!options){
-    console.error("All you 'select' need options.")
+if(!locals.options){
+    console.error("All your 'select' need options.")
+}
+if(!locals.id){
+    console.error("All your 'select' need an id.")
 }
 %>
-<select name="" id="">
+<select name="<%=locals.name ? name : id%>" id="<%=id%>">
     <% for(const [value, name] of options){%>
         <option value="<%=value%>"><%=name%></option>
     <%}%>
