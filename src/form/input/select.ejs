@@ -1,0 +1,10 @@
+<% 
+if(!options){
+    console.error("All you 'select' need options.")
+}
+%>
+<select name="" id="">
+    <% for(const [value, name] of options){%>
+        <option value="<%=value%>"><%=name%></option>
+    <%}%>
+</select>
