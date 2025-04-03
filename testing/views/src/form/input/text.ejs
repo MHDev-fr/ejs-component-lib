@@ -1,0 +1,12 @@
+<input 
+    type="text"
+    name="<%=locals.name ? locals.name : id%>" 
+    id="<%=id%>" 
+    <% if(locals.options){
+        let res;
+        for(const [property, value] of options){
+            res=`${property}=${value}`
+        %>
+        <%=res%>
+    <%}}%>
+>
