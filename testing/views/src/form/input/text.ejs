@@ -1,3 +1,9 @@
+<% 
+if(!locals.id){
+    console.error("All your 'input:text' need an id.")
+}
+//format ejs option => {id : '', options : [['property', 'value']...]}
+%>
 <input 
     type="text"
     name="<%=locals.name ? locals.name : id%>" 
