@@ -6,6 +6,22 @@
     <title>Test</title>
 </head>
 <body>
+    <!-- add style CSS & TailwindCSS configuration -->
+    <% const haveCustomCss = locals.comp_options.style ? true : false %>
+    <% /*const paramsObj = {
+        id : id, 
+        options: comp_options,
+        style : {
+            TailwindCSS : false;
+            component : {
+                default : '',
+                moderne : '',
+                aesthetic : '',
+                poly : '',
+                rou : '',
+            }
+        }
+    } */%>
     <%- include(`./src/form/input/${path}`, {id : id, options: comp_options})%>
 </body>
 </html>
