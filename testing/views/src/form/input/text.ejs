@@ -2,27 +2,27 @@
 if(!locals.id){
     console.error("All your 'input:text' need an id.")
 }
-let name;
-const findName = () => {
-    if(locals.name)
-        return name = locals.name;
+const findProp = (prop) => {
+    let propValue;
+    if(locals[prop])
+        return propValue = locals[prop];
     const haveNameInOption = locals.options.forEach(
         (option, index) => {
-            if(option[0] === 'name'){
-                return name = option[1]
+            if(option[0] === prop){
+                return propValue = option[1]
             }
         })
-    if(name)
-        return name
+    if(propValue)
+        return propValue
     return null;
 }
-findName()
+const shortFinding = (prop, def) => findProp(prop) ? findProp(prop) : def
 //testing something
 //format ejs option => {id : '', options : [['property', 'value'],['property', 'value']...]}
 %>
 <input 
     type="text"
-    name="<%=name ? name : id%>" 
+    name="<%=shortFinding('name', id)%>" 
     id="<%=id%>" 
     <% if(locals.options){
         let res;
