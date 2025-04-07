@@ -1,13 +1,13 @@
 <% 
 if(!locals.id){
-    console.error("All your 'input:text' need an id.")
+    console.error("All your 'input:<type>' need an id.")
 }
 const findProp = (prop) => {
     let propValue;
     if(locals[prop])
         return propValue = locals[prop];
-    const haveNameInOption = locals.options.forEach(
-        (option, index) => {
+    locals.options.forEach(
+        option => {
             if(option[0] === prop){
                 return propValue = option[1]
             }
@@ -17,13 +17,26 @@ const findProp = (prop) => {
     return null;
 }
 const shortFinding = (prop, def) => findProp(prop) ? findProp(prop) : def
-//testing something
-//format ejs option => {id : '', options : [['property', 'value'],['property', 'value']...]}
+let formatingStyle; 
+if(locals.style){
+    formatingStyle = () => {
+        const style = locals.style
+        let styleStr = ``;
+        for(const key in style){
+            styleStr += `${key}:${style[key].replaceAll(' ', '°')};`
+        }
+        return `style=${styleStr}`;
+    }
+}
+console.log(formatingStyle())
 %>
 <input 
     type="text"
     name="<%=shortFinding('name', id)%>" 
-    id="<%=id%>" 
+    id="<%=id%>"
+    <% if(locals.style){%>
+        <%=formatingStyle().replaceAll('°', ' ')%>
+    <%}%>
     <% if(locals.options){
         let res;
         for(const [property, value] of options){
